@@ -75,7 +75,6 @@ module.exports = {
   .addField("Utiles ["+Utiles2+"]", Utiles)  
   .addField("Reaccion ["+Reaccion2+"]", Reaccion) 
   .addField("Interaccion ["+IN2+"]", IN) 
-  .addField("NSFW ["+nsf+"]", owo) 
   .addField("Divertidos ["+Divertidos2+"]", Divertidos) 
   .addField("Desarrollo ["+dedo+"]", d) 
   .setImage("https://images-ext-2.discordapp.net/external/7N05IMFc9gywOvM3bI9T9hP52cVwqcon6OcvWfDmzVg/https/media.giphy.com/media/SVs0cQ0nLRsLNUadmn/giphy.gif")

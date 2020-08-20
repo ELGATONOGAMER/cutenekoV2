@@ -51,7 +51,13 @@ let pts = " ";
 if(!args.length){
 member = message.member
 } else {
-member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(m => m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) || message.guild.members.cache.filter(m => m.user.tag.toLowerCase().includes(args.join(" ").toLowerCase())).map(m => m)[0] || message.member
+member = message.mentions.members.first() 
+|| message.guild.members.cache.get(args[0]) 
+|| message.guild.members.cache.find(m => m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) 
+|| message.guild.members.cache.find(m => m.displayName.toLowerCase() === args.join(" ").toLowerCase()) 
+|| message.guild.members.cache.find(m => m.user.tag.toLowerCase().includes(args.join(" ").toLowerCase())) 
+|| message.guild.members.cache.find(m => m.displayName.toLowerCase().includes(args.join(" ").toLowerCase()))
+|| message.member
 }
     
 let p = member.user.presence.activities.map(Activity => Activity.name).join(" ") ? member.user.presence.activities.map(Activity => Activity.name).join(" | ") : "No tiene";
@@ -94,12 +100,16 @@ if(pt == "PLAYING"){
     
  let insignias = ""
       
- const badges = member.user.flags.toArray();
+ let badges;
+ 
+ if(member.user.flags > 0){
+   badges = member.user.flags.toArray();
     if(member.premiumSince){
       badges.push("NITRO", "NITRO_BOOSTER")
     } else if(member.user.avatar.startsWith("a_")){
       badges.push("NITRO")
     }
+ }
     
     if(dev_db.tiene(`${member.user.id}`)) {
       badges.push("CUTESTAFF")
@@ -165,12 +175,19 @@ if(pt == "PLAYING"){
     
   }
     
+  const be = {
+  
+  false:"No",
+  true:"Si"
+
+  }
 
   const us = new Discord.MessageEmbed()  
   .addField(`Nombre:`, `- ${member.user.username}`)  
   .addField(`Apodo:`, `- ${member.nickname ? member.nickname : "No tiene"}`)   
   .addField(`Tag:`, `- #${member.user.discriminator}`)   
   .addField(`ID:`, `- ${member.user.id}`)   
+  .addField(`¿Bot?`, `- ${be[member.user.bot]}`)
   .addField(`Presencia:`, `- ${pre}`)
   .addField(`Insignias:`, `- ${insignias}`)   
   .addField(`Estado:`, `${b}`)  

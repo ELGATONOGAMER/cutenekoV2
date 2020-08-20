@@ -67,6 +67,22 @@ for (const file of fs.readdirSync("./events/messages")){
   
 }
 
+/* ====== EVENTOS DE GUILD ====== */
+
+for (const file of fs.readdirSync("./events/guild")){
+  
+  if(file.endsWith(".js")){
+    
+    let filen = file.substring(0, file.length - 3)
+    
+    let filec = require(`./events/guild/${file}`)
+    
+    cute.on(filen, filec.bind(null, cute))
+    
+  }
+  
+}
+
 /* <===== Eventos de guildMember =====> */
 
 for (const file of fs.readdirSync("./events/guildMember")){

@@ -12,6 +12,8 @@ module.exports =
   
     if(message.content.startsWith("<@"+cute.user.id+"> help") || message.content.startsWith("<@!"+cute.user.id+"> help")) {
       
+     if(message.author.bot) return  
+
     const embed = new Discord.MessageEmbed()
       .setAuthor(cute.user.username, cute.user.displayAvatarURL({ format: "png", dynamic: true, size: 2048 }))
       .setDescription(`¿Te olvidaste de mi prefix? Prefix: \`${prefix}\`\n\nUsa: \`${prefix}help\` para mas informacion.`)
@@ -31,7 +33,7 @@ module.exports =
   
 
 	if (!cmd) {
-   
+
     const randomcmd = cute.commands.map(c => c.name)[Math.floor(cute.commands.size * Math.random())]
     const samecmd = command.length < 1 ? randomcmd : cute.commands.filter(c => c.name !== "reload" && c.name !== "eval" && c.name !== "vip" && c.name !== "devs" && (c.name.toLowerCase().includes(command) || (c.alias && c.alias.includes(command)))).map(c => c.name).join("`, `")
     const maybecmd = samecmd ? `\n<a:cloading:713914246601113693> | Talvez quisiste usar: \`${samecmd}\`` : ``

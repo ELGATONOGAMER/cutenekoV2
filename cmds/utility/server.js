@@ -153,17 +153,8 @@ module.exports = {
     w = "Muy Alto\n- Debe llevar en Discord más de 5 minutos registrado, llevar más de 10 minutos conectado en el servidor, tener un teléfono verificado y tener un correo electrónico verificado"
   }
     
-    
-    if (message.guild.bannerURL({ format: "png", dynamic: true, size: 2048 }) !== null) {
-      
-    j = message.guild.bannerURL({ format: "png", dynamic: true, size: 2048 })  
-      
-    } else {
-      
-    j = "https://images-ext-2.discordapp.net/external/UTkCgXNiwR8bdvi-Arc3MrunD7n1pD4L2M6c3_uiB9U/https/cdn.weeb.sh/images/HkUlIUXDZ.gif?width=400&height=225"  
-      
-    }
-    
+
+     const newsch = message.guild.channels.cache.filter(x => x.type === 'news').map(x => x).join("\n- ")
    
 
     const serv = new Discord.MessageEmbed()
@@ -174,6 +165,7 @@ module.exports = {
     .addField(`Canales Totales:`, `- ${guild.channels.cache.size} [**${message.guild.channels.cache.filter(c => c.type === 'text').size}** de texto | **${message.guild.channels.cache.filter(c => c.type === 'voice').size}** de voz | **${message.guild.channels.cache.filter(c => c.type === 'category').size}** categorías]`) 
     .addField(`Emojis:`, `- ${message.guild.emojis.cache.size} [**${message.guild.emojis.cache.filter(e => !e.animated).size}** estáticos | **${message.guild.emojis.cache.filter(e => e.animated).size}** animados]`)
     .addField(`Mensaje del sistema:`, `- ${s}`)
+    .addField(`Canales de noticias:`, `- ${newsch.length <= 0 ? "Ningun canal." : `${newsch}`}`)
     .addField(`Rol mas alto:`, `- ${guild.roles.highest}`)
     .addField(`Canal AFK:`, `- ${guild.afkChannel !== null ? `**${guild.afkChannel}**\n- ${y}` : "No tiene"}  `) 
     .addField(`Region:`, `- ${region[guild.region]}`)
@@ -183,7 +175,6 @@ module.exports = {
     .addField(`Nitro Boost:`, `- Boosteos: ${message.guild.premiumSubscriptionCount}\n- ${nivel[message.guild.premiumTier]}`)
     .addField(`Nivel de verificacion:`, `- ${w}`)
     .addField(`Creado el:`, `- ${moment(guild.createdAt).utcOffset(-3).format("dddd D MMMM YYYY")}\n- ${checkDays(guild.createdAt)}`)
-    .setImage(j)
     .setColor("RANDOM")
     .setThumbnail(guild.iconURL({ format: "png", dynamic: true, size: 2048 }))
     

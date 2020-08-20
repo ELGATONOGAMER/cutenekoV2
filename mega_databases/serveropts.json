@@ -3,5 +3,11 @@
     "welcomeM": "Bienvenido {user} a mi servidor **¡¡{server}!!**.\nLee las <#738896442281951282> para evitar problemas.\nObtén un color para ti: <#690323914626564136> \n\nGracias a ti somos `{members} gatitos.`\n\nhttps://images-ext-1.discordapp.net/external/G66hHRdZQa2hwfmU-qmtzl976dVFnDm7diaIKCqmxwg/https/media1.tenor.com/images/072fa5326ee175853c2e862af3aa76f5/tenor.gif?width=400&height=225",
     "welcome": "741021800162394233",
     "logs": "722971632011837440"
+  },
+  "312846399731662850": {
+    "welcome": "541473170105040931"
+  },
+  "703969586470584431": {
+    "prefix": "!"
   }
 }

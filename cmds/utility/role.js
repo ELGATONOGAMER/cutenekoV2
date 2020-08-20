@@ -19,7 +19,7 @@ module.exports = {
       const rol = new Discord.MessageEmbed()
       .setAuthor(cute.user.username, cute.user.displayAvatarURL({ format: "png", dynamic: true, size: 2048 }))
       .setDescription("Informacion sobre el rol mencionado.")
-      .addField("Nombre:", `- ${role}`)
+      .addField("Nombre:", `- ${role.name}`)
       .addField("ID:", `- ${role.id}`)
       .addField("Miembros con el Rol:", `- ${role.members.size}`)
       .addField("Posición:", `- ${role.rawPosition}`)
