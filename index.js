@@ -198,16 +198,3 @@ for (const file of fs.readdirSync("./cmds/moderation")){
   
 }
 
-/* <===== Comandos de Nsfw!!!! =====> */
-
-for (const file of fs.readdirSync("./cmds/nsfw")){
-  
-  if(file.endsWith(".js")){
-    
-    let filec = require(`./cmds/nsfw/${file}`)
-    
-    cute.commands.set(filec.name, filec)
-    
-  }
-  
-}

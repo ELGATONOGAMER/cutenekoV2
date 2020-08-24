@@ -34,6 +34,8 @@ module.exports =
 
 	if (!cmd) {
 
+     if(command.length <= 0) return
+
     const randomcmd = cute.commands.map(c => c.name)[Math.floor(cute.commands.size * Math.random())]
     const samecmd = command.length < 1 ? randomcmd : cute.commands.filter(c => c.name !== "reload" && c.name !== "eval" && c.name !== "vip" && c.name !== "devs" && (c.name.toLowerCase().includes(command) || (c.alias && c.alias.includes(command)))).map(c => c.name).join("`, `")
     const maybecmd = samecmd ? `\n<a:cloading:713914246601113693> | Talvez quisiste usar: \`${samecmd}\`` : ``

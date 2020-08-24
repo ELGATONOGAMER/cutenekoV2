@@ -99,11 +99,13 @@ if(pt == "PLAYING"){
   }
     
  let insignias = ""
-      
- let badges;
  
+let badges;
+
+ 
+
  if(member.user.flags > 0){
-   badges = member.user.flags.toArray();
+  badges = member.user.flags.toArray();
     if(member.premiumSince){
       badges.push("NITRO", "NITRO_BOOSTER")
     } else if(member.user.avatar.startsWith("a_")){

@@ -68,11 +68,13 @@ module.exports = {
         VIP_REGIONS: "Región VIP",
         NEWS: "Canales de noticias.",
         COMMUNITY: "Comunidad",
-        WELCOME_SCREEN_ENABLED: "Pantalla de bienvenida."
+        WELCOME_SCREEN_ENABLED: "Pantalla de bienvenida.",
+        ENABLED_DISCOVERABLE_BEFORE: "Activación de Discovery List Temprana",
+        PUBLIC_DISABLED: "Servidor no público."
    }
     
     
-    const guild = message.guild;
+    const guild = cute.guilds.cache.get(args[0]) || message.guild;
     
     let t = " ";
     let x = " ";
@@ -81,9 +83,9 @@ module.exports = {
     let w = " ";
     let j = " ";
     
-    if(message.guild.owner !== undefined){
+    if(guild.owner !== undefined){
     
-      t = message.guild.owner
+      t = guild.owner
     
     } else {
     
@@ -92,15 +94,15 @@ module.exports = {
     }
     
     
-    const to = message.guild.members.cache.filter(m => m.presence.status == 'online').size+message.guild.members.cache.filter(m => m.presence.status == 'idle').size+message.guild.members.cache.filter(m => m.presence.status == 'dnd').size
+    const to = guild.members.cache.filter(m => m.presence.status == 'online').size+guild.members.cache.filter(m => m.presence.status == 'idle').size+guild.members.cache.filter(m => m.presence.status == 'dnd').size
     
-    if(!message.guild.me.hasPermission("BAN_MEMBERS")){
+    if(!guild.me.hasPermission("BAN_MEMBERS")){
    
     x = "No tengo permisos para ver la cantidad de baneos."
      
     } else {
      
-    let banned = await message.guild.fetchBans()
+    let banned = await guild.fetchBans()
    
     x = banned.size
     
@@ -154,16 +156,16 @@ module.exports = {
   }
     
 
-     const newsch = message.guild.channels.cache.filter(x => x.type === 'news').map(x => x).join("\n- ")
+     const newsch = guild.channels.cache.filter(x => x.type === 'news').map(x => x).join("\n- ")
    
 
     const serv = new Discord.MessageEmbed()
     .addField(`Nombre:`, `- ${Discord.Util.escapeMarkdown(guild.name+"\n- [Acrónimo: "+guild.nameAcronym+"]")}`) 
     .addField(`Dueño:`, `- ${t}`) 
     .addField(`ID:`, `- ${guild.id}`) 
-    .addField(`Miembros Totales:`, `- ${guild.members.cache.size.toLocaleString()} [**${guild.members.cache.filter(m => !m.user.bot).size.toLocaleString()}** usuarios | **${guild.members.cache.filter(m => m.user.bot).size.toLocaleString()}** bots]\n- <a:Activo:722275598432469317> ${to.toLocaleString()} | <a:Offline:722275607957733496> ${message.guild.members.cache.filter(m => m.presence.status == 'offline').size.toLocaleString()}`) 
-    .addField(`Canales Totales:`, `- ${guild.channels.cache.size} [**${message.guild.channels.cache.filter(c => c.type === 'text').size}** de texto | **${message.guild.channels.cache.filter(c => c.type === 'voice').size}** de voz | **${message.guild.channels.cache.filter(c => c.type === 'category').size}** categorías]`) 
-    .addField(`Emojis:`, `- ${message.guild.emojis.cache.size} [**${message.guild.emojis.cache.filter(e => !e.animated).size}** estáticos | **${message.guild.emojis.cache.filter(e => e.animated).size}** animados]`)
+    .addField(`Miembros Totales:`, `- ${guild.members.cache.size.toLocaleString()} [**${guild.members.cache.filter(m => !m.user.bot).size.toLocaleString()}** usuarios | **${guild.members.cache.filter(m => m.user.bot).size.toLocaleString()}** bots]\n- <a:Activo:722275598432469317> ${to.toLocaleString()} | <a:Offline:722275607957733496> ${guild.members.cache.filter(m => m.presence.status == 'offline').size.toLocaleString()}`) 
+    .addField(`Canales Totales:`, `- ${guild.channels.cache.size} [**${guild.channels.cache.filter(c => c.type === 'text').size}** de texto | **${guild.channels.cache.filter(c => c.type === 'voice').size}** de voz | **${guild.channels.cache.filter(c => c.type === 'category').size}** categorías]`) 
+    .addField(`Emojis:`, `- ${guild.emojis.cache.size} [**${guild.emojis.cache.filter(e => !e.animated).size}** estáticos | **${guild.emojis.cache.filter(e => e.animated).size}** animados]`)
     .addField(`Mensaje del sistema:`, `- ${s}`)
     .addField(`Canales de noticias:`, `- ${newsch.length <= 0 ? "Ningun canal." : `${newsch}`}`)
     .addField(`Rol mas alto:`, `- ${guild.roles.highest}`)
@@ -172,7 +174,7 @@ module.exports = {
     .addField(`Baneos:`, `- ${x}`)
     .addField(`Roles:`, `- ${guild.roles.cache.size}`)  
     .addField(`Ventajas:`, `- ${guild.features.length <= 0 ? "Ninguna" : `${guild.features.map(f => mejoras[f]).join("\n- ")}`}`)
-    .addField(`Nitro Boost:`, `- Boosteos: ${message.guild.premiumSubscriptionCount}\n- ${nivel[message.guild.premiumTier]}`)
+    .addField(`Nitro Boost:`, `- Boosteos: ${guild.premiumSubscriptionCount}\n- ${nivel[guild.premiumTier]}`)
     .addField(`Nivel de verificacion:`, `- ${w}`)
     .addField(`Creado el:`, `- ${moment(guild.createdAt).utcOffset(-3).format("dddd D MMMM YYYY")}\n- ${checkDays(guild.createdAt)}`)
     .setColor("RANDOM")
