@@ -159,7 +159,7 @@ let badges;
   
   const boost = `${moment(member.premiumSince).utcOffset(-3).format("dddd D MMMM YYYY")}\n- ${dias}`
   
-  insignias = `${badges.length <= 0 ? "Ninguna." : `${badges.map(b => ins[b]).join(" | ")}`}`
+  insignias = `${member.user.flags ? badges.length <= 0 ? "Ninguna." : `${badges.map(b => ins[b]).join(" | ")}` : "No tiene"}`
     
  
   

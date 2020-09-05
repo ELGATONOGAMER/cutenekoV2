@@ -18,7 +18,7 @@ module.exports = {
     
   if(member.id === message.member.id){
     
-  j = "Pues vale... te matare..."
+  return message.channel.send("<a:cloading:713914246601113693> | No te puedes matar a ti mismo.\n<a:cloading:713914246601113693> | `Funcion eliminada, ya que esto cuenta como un suicide.`")
     
   } else {
     

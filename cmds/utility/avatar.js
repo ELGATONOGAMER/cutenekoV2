@@ -15,7 +15,7 @@ module.exports = {
        
        const mencionado = new Discord.MessageEmbed()
     .setAuthor(cute.user.username, cute.user.displayAvatarURL({ format: "png", dynamic: true, size: 2048 }))
-    .setImage(img.user.avatarURL({ format: "png", dynamic: true, size: 2048 }))
+    .setImage(`${message.author.avatarURL({ format: "png", dynamic: true, size: 2048 })}`)
     .setColor("RANDOM")
     .setFooter('Pedido por: '+message.author.username)
     .setTitle('Avatar de '+img.user.username)
@@ -64,7 +64,7 @@ module.exports = {
       
        const mencionado = new Discord.MessageEmbed()
     .setAuthor(cute.user.username, cute.user.displayAvatarURL({ format: "png", dynamic: true, size: 2048 }))
-    .setImage(img.user.avatarURL({ format: "png", dynamic: true, size: 2048 }))
+    .setImage(""+img.user.avatarURL({ format: "png", dynamic: true, size: 2048 })+"")
     .setColor("RANDOM")
     .setFooter('Pedido por: '+message.author.username)
     .setTitle('Avatar de '+img.user.username)
