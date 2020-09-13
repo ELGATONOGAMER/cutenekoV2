@@ -5,19 +5,14 @@ module.exports = {
   category: "fun",
   run: async (cute, message, args) => {
 
-  const { memeAsync } = require('memejs');
+  const meme = require('melphiworker').meme()
 
  message.channel.send("<a:cloading:713914246601113693> | Espera mientras se carga el meme.").then(async o => {
 
-memeAsync('SpanishMeme') 
-.then(async m => {
-  
+  await message.channel.send({ files :  [`${meme}`] })
+  await o.delete()
  
 
-  await message.channel.send(`${m.title}`,{ files : [`${m.url}`] })
-  await o.delete()
-
-  })
 
 })
 

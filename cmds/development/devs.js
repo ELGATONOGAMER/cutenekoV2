@@ -15,8 +15,7 @@ module.exports = {
     const prefixdb = new crearDB("serveropts")
     const prefix = prefixdb.tiene(`${message.guild.id}.prefix`) ? await prefixdb.obtener(`${message.guild.id}.prefix`) : "g?" 
     
-     if(!dev_db.tiene(`${message.author.id}`)) return message.channel.send("<a:cloading:713914246601113693> | Solo mi querido amo puede usar este comando.")     
-    
+     if(!dev_db.tiene(`${message.author.id}`)) return message.channel.send("<a:cloading:713914246601113693> | Solo mi querido amo puede usar este comando.")
     
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[1]) 
         

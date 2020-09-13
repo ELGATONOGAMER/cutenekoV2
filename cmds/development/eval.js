@@ -18,7 +18,7 @@ module.exports = {
     
     if(!dev_db.tiene(`${message.author.id}`)) return message.channel.send("<a:cloading:713914246601113693> | Solo mi querido amo puede usar este comando.")      
     
-    if(!args.length) return message.channel.send("¿Que deseas evaluar?")
+    if(!args.length) return message.channel.send(`¿Qué deseas evaluar, ${message.author.id == "686766483350880351" ? "Diosito Rickz" : "Sr Gato"}?`)
     
     let limit = 1000
     let code = args.join(" ")
@@ -28,7 +28,7 @@ module.exports = {
       let evalued = eval(code)
       
       if(typeof evalued !== "string")
-        evalued = require("util").inspect(evalued)
+        evalued = require("util").inspect(evalued, { depth: 0 })
       let txt = ""+evalued
       
       const type2 = typeof eval(code)

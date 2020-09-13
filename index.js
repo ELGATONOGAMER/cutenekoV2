@@ -17,7 +17,8 @@ setInterval(() => {
 /* Estrctura del boooooot */
 
 const Discord = require("discord.js")
-const cute = new Discord.Client({ disableMentions: "everyone" })
+const cute = new Discord.Client({ allowedMentions: { parse: [] } })
+cute.roles = new(require("./utils/RoleManager.js"))(cute);
 const mongoose = require("mongoose")
 
 const fs = require("fs"), { readdirSync } = require("fs")
