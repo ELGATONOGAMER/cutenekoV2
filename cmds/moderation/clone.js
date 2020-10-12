@@ -1,6 +1,6 @@
 module.exports = {
-  name: "nuke",
-  alias: ["clone"],
+  name: "clone",
+  alias: [],
   cooldown: 5,
   category: "moderation",
   run: async (cute, message, args) => {

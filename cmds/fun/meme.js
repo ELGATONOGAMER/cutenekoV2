@@ -1,7 +1,7 @@
 module.exports = {
   name: "meme",
   alias: ["momazo"],
-  cooldown: 7,
+  cooldown: 5,
   category: "fun",
   run: async (cute, message, args) => {
 

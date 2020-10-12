@@ -8,6 +8,8 @@ module.exports =
   const prefixdb = new crearDB("serveropts")
   const dev_db = new crearDB("devs");
 
+ 
+
   const prefix = prefixdb.tiene(`${message.guild.id}.prefix`) ? await prefixdb.obtener(`${message.guild.id}.prefix`) : "g?"
   
     if(message.content.startsWith("<@"+cute.user.id+"> help") || message.content.startsWith("<@!"+cute.user.id+"> help")) {

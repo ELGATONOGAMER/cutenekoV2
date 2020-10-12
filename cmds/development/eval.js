@@ -26,12 +26,12 @@ module.exports = {
     try{
       
       let evalued = eval(code)
-      
+
+      const type2 = typeof(evalued);      
       if(typeof evalued !== "string")
         evalued = require("util").inspect(evalued, { depth: 0 })
       let txt = ""+evalued
       
-      const type2 = typeof eval(code)
       const type1 = type2.toString().split("")
       const type = type1[0].toUpperCase()+type1.slice(1).join("")
       
