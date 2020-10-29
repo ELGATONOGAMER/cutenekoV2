@@ -1,21 +1,3 @@
-const http = require('http');
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-app.get("/", (request, response) => {
-  response.sendStatus(200);
-});
-
-app.listen(process.env.PORT);
-
-setInterval(() => {
-  http.get(`http://cuteneko.gatitouwu.repl.run`); 
-}, 280000);
-
-/* Estrctura del boooooot */
-
 const Discord = require("discord.js")
 const cute = new Discord.Client({ allowedMentions: { parse: [] } })
 cute.roles = new(require("./utils/RoleManager.js"))(cute);
