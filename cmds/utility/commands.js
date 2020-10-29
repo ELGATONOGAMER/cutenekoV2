@@ -77,9 +77,9 @@ module.exports = {
   .addField("Interaccion ["+IN2+"]", IN) 
   .addField("Divertidos ["+Divertidos2+"]", Divertidos) 
   .addField("Desarrollo ["+dedo+"]", d) 
-  .setImage("https://images-ext-2.discordapp.net/external/7N05IMFc9gywOvM3bI9T9hP52cVwqcon6OcvWfDmzVg/https/media.giphy.com/media/SVs0cQ0nLRsLNUadmn/giphy.gif")
+  .setImage("https://media.discordapp.net/attachments/359425464885837827/766746759476150272/comandos.png")
   
-  .setColor("RANDOM")  
+  .setColor("#ffa9a9")  
     
   message.channel.send(comandos)  
     

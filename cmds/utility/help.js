@@ -1,6 +1,6 @@
 module.exports = {
   name: "help",
-  alias: ["cmds", "commands"],
+  alias: [],
   cooldown: 5,
   category: "utility",
   run: async (cute, message, args) => {

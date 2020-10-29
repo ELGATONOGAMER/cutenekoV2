@@ -13,7 +13,7 @@ module.exports = {
 
     
     const gato = cute.users.resolve("672644434449399818")
-     const rickz = cute.users.resolve("551514133170880517")
+     const rickz = cute.users.cache.get("686766483350880351")
 
     
     const prefix = prefixdb.tiene(`${message.guild.id}.prefix`) ? await prefixdb.obtener(`${message.guild.id}.prefix`) : "g?" 
@@ -47,7 +47,7 @@ module.exports = {
     const inf = new Discord.MessageEmbed()
     .setAuthor(cute.user.username, cute.user.displayAvatarURL({ format: "png", dynamic: true, size: 2048 }))
     .addField(`Nombre:`, `- ${cute.user.username}`)
-    .addField(`Desarrolladores:`, `- ${gato.tag}\n- ${rickz.tag}`)
+    .addField(`Desarrollador:`, `- ${gato.username}#${gato.discriminator}`)
     .addField(`Memoria:`, `- ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`)
     .addField(`Librería:`, `- Discord.js ( ${Discord.version} )`)
     .addField(`Servidores:`, `- ${cute.guilds.cache.size.toLocaleString()}`)
@@ -59,6 +59,7 @@ module.exports = {
     .addField(`Creado el:`, `- ${moment(cute.user.createdAt).utcOffset(-3).format("dddd D MMMM YYYY")}\n- ${checkDays(cute.user.createdAt)}`) 
     .addField(`Uptime:`, `- ${actividad}`) 
     
+     
     .setImage("https://top.gg/api/widget/684594811700903939.png")
     .setColor("RANDOM")
     
